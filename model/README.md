@@ -1,4 +1,4 @@
-# pipline
+# Запуск нашего решения
 
 ```cmd
 docker build -t girya_team .
