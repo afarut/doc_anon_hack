@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Загрузка файла - Инструмент анонимизации документов{% endblock %}
+{% block content %}
+<style>
+    #htext {
+        animation: none;
+        opacity: 1;
+    }
+
+    header {
+        animation: 0s;
+        opacity: 1;
+    }
+
+    .main-div {
+        position: relative;
+        z-index: 1;
+    }
+
+</style>
+
+<div class="dropzone-overlay" id="dropzone-overlay">
+    Перетащите файл
+</div>
+
+<div class="main-div">
+    <a class="logo-div" href="https://ask.nenaprasno.ru/"><img class="logo" src="https://ask.nenaprasno.ru/static/images/logo.svg"></a>
+    <h1 id="htext">Загрузка файла</h1>
+    <form action="{{ url_for('upload') }}" class="form-upload" method="post" enctype="multipart/form-data">
+        <input class="form-input" type="text" name="title" id="title" placeholder="Название файла" required>
+        
+        <label for="file-upload" id="file-upload-label" class="custom-file-upload">
+            Выбрать файл
+        </label>
+        <input id="file-upload" type="file" name="file" accept=".pdf, .docx" required style="display: none;">
+        
+        <button type="submit" id="upload-button" class="main-button">Загрузить</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('file-upload').addEventListener('change', function() {
+        var fileName = this.files[0].name;
+        var label = document.getElementById('file-upload-label');
+        label.textContent = fileName;
+    });
+</script>
+{% endblock %}

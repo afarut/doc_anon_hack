@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}ГИРЯ{% endblock %}
+{% block content %}
+
+<div class="main-div">
+    <a class="logo-div" href="https://ask.nenaprasno.ru/"><img class="logo" src="https://ask.nenaprasno.ru/static/images/logo.svg"></a>
+    <h1 id="htext">Инструмент анонимизации документов</h1>
+    <p class="home-text">Безопасность и конфиденциальность ваших данных - наш приоритет</p>
+    <div id="div-center">
+        <ul class="ul-how">
+            <li><h2 class="how-text">Как это работает:</h2></li>
+            <li class="li-how"><p class="p-how">Загрузите ваш документ(docx, jpg или png):</p> Перетащите файл в соответствующую область или выберите его на своем устройстве</li>
+            <li class="li-how"><p class="p-how">Подождите:</p> Примерное время обработки - 1-3 секунды</li>
+            <li class="li-how"><p class="p-how">Просмотрите результат:</p> Убедитесь, что вся личная информация скрыта или удалена</li>
+            <li class="li-how"><p class="p-how">Сохраните анонимизированный текст:</p> Вы сможете найти его в своем личном кабинете в любое время</li>
+        </ul>
+    </div>
+    <a href="{{ url_for('register') }}"><button id="home-button" class="main-button">Попробовать сейчас</button></a>
+</div>
+{% endblock %}

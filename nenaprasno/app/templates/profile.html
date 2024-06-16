@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Профиль{% endblock %}
+{% block content %}
+    <style>
+        #htext {
+            margin: -15px;
+            animation: none;
+            opacity: 1;
+        }
+
+        header {
+            animation: 0s;
+            opacity: 1;
+        }
+    </style>    
+    <h1 id="htext" class="title">Инструмент анонимизации документов</h1>
+    {% if texts %}
+    <a href="/upload"><button id="upload" class="main-button">Загрузить документ</button></a>
+        <ul class="text-list">
+            {% for text in texts %}
+                <li class="text-item">
+                    <div class="how-text">
+                        <h2 class="text-title">{{ text.title }}</h2>
+                        <p class="text-content">{{ text.content | replace('\n', '<br>') | safe }}</p>
+                        <form action="{{ url_for('delete_text', text_id=text.id) }}" method="post" class="delete-form">
+                            <button type="submit" class="delete-button">Удалить</button>
+                        </form>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="pagination">
+            {% if pagination.has_prev %}
+                <a href="{{ url_for('profile', page=pagination.prev_num) }}" class="pagination-submit">Предыдущая</a>
+            {% endif %}
+            <span class="pagination-info">Страница {{ pagination.page }} из {{ pagination.pages }}</span>
+            {% if pagination.has_next %}
+                <a href="{{ url_for('profile', page=pagination.next_num) }}" class="pagination-submit">Следующая</a>
+            {% endif %}
+            <form action="{{ url_for('profile') }}" method="get" class="pagination-form">
+                <label for="page-number" class="pagination-label">Перейти на страницу:</label>
+                <input type="number" id="page-number" name="page" min="1" max="{{ pagination.pages }}" value="{{ pagination.page }}" class="pagination-input">
+                <button type="submit" class="pagination-submit">Перейти</button>
+            </form>
+        </div>
+    {% else %}
+        <p class="no-texts">У вас нет загруженных текстов :(</p>
+        <a href="/upload"><button id="upload" class="main-button">Загрузить</button></a>
+    {% endif %}
+{% endblock %}
