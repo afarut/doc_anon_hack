@@ -1,4 +1,6 @@
-# Запуск нашего решения
+# ML
+На данный момент наше решение развернуто 
+## Запуск нашего решения
 
 ```cmd
 docker build -t girya_team .
@@ -8,14 +10,14 @@ docker build -t girya_team .
 docker run -p 5000:5000 girya_team
 ```
 
-# Запросы
+## Запросы
 
-## Проверка работоспособности
+### Проверка работоспособности
 ```
 curl -H "Content-type: application/json" -X GET http://localhost:5000
 ```
 
-## Запрос в модель
+### Запрос в модель
 ```
 curl -H "Content-type: application/json" -X POST -d '{"text": "Текстовое сообщение. Не более 512 символов за один запрос."}' http://localhost:5000
 ```
