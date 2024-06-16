@@ -1,6 +1,6 @@
 #pipline
 
 ```cmd
-docker build .
+docker build -t girya_team .
 ```
 
