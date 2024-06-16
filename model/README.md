@@ -1,1 +1,6 @@
- 
+#pipline
+
+```cmd
+docker build .
+```
+
